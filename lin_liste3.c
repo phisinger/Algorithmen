@@ -80,7 +80,7 @@ LinList_p LinList_revert(LinList_p *anchor)
 LinList_p LinList_Find(LinList_p liste, char* value)
 {
     while(liste){
-        if(strcmp(liste->payload,value)){
+        if(strcmp(liste->payload,value)==0){
             return liste;
         }
         liste = liste->next;
