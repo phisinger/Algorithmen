@@ -75,6 +75,11 @@ LinList_p LinListExtractLast(LinList_p *anchor){
     
 }
 
+//zaehlen
+int LinList_count(LinList_p liste){
+    
+}
+
 //Umdrehen
 LinList_p LinList_revert(LinList_p *anchor)
 {
