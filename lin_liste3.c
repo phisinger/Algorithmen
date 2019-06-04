@@ -40,6 +40,14 @@ void LinListFree(LinList_p *junk)
     }
 }
 
+// // Insert a cell as last
+// LinList_p LinListInsertLast(LinList_p liste, LinList_p newcell){
+//     while(liste){
+//         liste = liste->next;
+//     }
+//     liste -> next = newcell;
+// }
+
 //Insert a cell as first
 LinList_p LinListInsertFirst(LinList_p *anchor, LinList_p newcell)
 {
@@ -59,8 +67,12 @@ LinList_p LinListExtractFirst(LinList_p *anchor)
         *anchor =res->next;
             res->next=NULL;
     }
-    
     return res;
+}
+
+//extract last list cell
+LinList_p LinListExtractLast(LinList_p *anchor){
+    
 }
 
 //Umdrehen
@@ -130,7 +142,7 @@ int main(int argc, char *argv[])
     while((l =fgets(content, MAXTERM, in)))
     {
         if(!LinList_Find(liste, l)){
-            LinListInsertFirst(&liste, (LinListAllocCell(content)));
+            LinListInsertLast(&liste, (LinListAllocCell(content)));
         }
     }
 
