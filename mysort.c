@@ -122,7 +122,7 @@ LinList_p LinListSort(LinList_p liste){
    l1 = LinListSort(l1);
    l2 = LinListSort(l2);
    
-   while(l1 || l2)
+   while((l1) || (l2))
    {
       if(!l2)
       {
@@ -196,16 +196,18 @@ int main(int argc, char *argv[])
         }
     }
 
-    //printing in reverse order
-    printf("\nReverse order\n==========\n");
+    liste = LinListSort(liste);
+
+    //printing in Output
+    printf("\nOutput\n==========\n");
     PrintList(stdout, liste);
 
-    //umdrehen
-    liste = LinList_revert(&liste);
+    // //umdrehen
+    // liste = LinList_revert(&liste);
 
-    //printing in the right order
-    printf("\nOriginal order\n==========\n");
-    PrintList(stdout, liste);
+    // //printing in the right order
+    // printf("\nOriginal order\n==========\n");
+    // PrintList(stdout, liste);
 
     if(in!=stdin)
     {

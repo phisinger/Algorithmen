@@ -1,8 +1,8 @@
-a
-b
-a
-b
-c
+ab
+ba
+ac
+bb
+cs
 d
 e
 d
