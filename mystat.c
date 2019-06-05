@@ -72,13 +72,28 @@ LinList_p LinListExtractFirst(LinList_p *anchor)
 
 //extract last list cell
 LinList_p LinListExtractLast(LinList_p *anchor){
-    
+    LinList_p res = *anchor;
+    while(&(*anchor) -> next)
+    {
+        *anchor = &(*anchor) -> next;
+    }
+    &(*anchor) -> next = NULL;
+    return *anchor;
+
 }
 
-//zaehlen
-int LinList_count(LinList_p liste){
+//zaehlen von Elementen
+
+/* Ich gehe die Liste durch. bei jedem String guck ich nach, ob ich ihn schon durchsucht habe
+*/
+// void LinList_count(LinList_p liste, char* value){
+//     int counter;
+//     while (liste)
+//     {
+//         //add
+//     }
     
-}
+// }
 
 //Umdrehen
 LinList_p LinList_revert(LinList_p *anchor)
@@ -196,7 +211,7 @@ int main(int argc, char *argv[])
     //read stdin and build list
     while((l =fgets(content, MAXTERM, in)))
     {
-        // if(!LinList_Find(liste, l)){
+        // if(LinList_count(liste, l)){
             LinListInsertFirst(&liste, (LinListAllocCell(content)));
         // }
     }
@@ -206,10 +221,15 @@ int main(int argc, char *argv[])
     printf("\nOutput\n==========\n");
     PrintList(stdout, liste);
 
-    //Sortieren
-    liste = LinListSort(liste);
+    // //Sortieren
+    // liste = LinListSort(liste);
+
+    
     // //umdrehen
     // liste = LinList_revert(&liste);
+
+    // letztes Element löschen
+    LinList_p lastElement = LinListExtractLast(&liste);
 
     //printing in the right order
     printf("\nOriginal order\n==========\n");
