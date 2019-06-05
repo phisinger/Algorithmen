@@ -7,7 +7,6 @@ def dAC(liste, unten, oben, key):
         return None
 
     mid = (unten + oben) // 2
-    print(liste[mid])
     if(key == liste[mid]):
         return mid
     if(key < liste[mid]):
@@ -16,17 +15,10 @@ def dAC(liste, unten, oben, key):
         return dAC(liste, mid+1, oben, key)
         
     
-
-
 unten = 0
 oben = len(liste)-1
 
-res = dAC(liste, unten, oben, 20)
-print("res:",res)
-print()
-res = dAC(liste, unten, oben, 8)
-print(res)
-print()
+print(dAC(liste, unten, oben, 20))
+print(dAC(liste, unten, oben, 8))
 print(dAC(liste, unten, oben, 0))
-print()
 print(dAC(liste, unten, oben, 3))
