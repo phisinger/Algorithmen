@@ -71,29 +71,20 @@ LinList_p LinListExtractFirst(LinList_p *anchor)
 }
 
 //extract last list cell
-LinList_p LinListExtractLast(LinList_p *anchor){
-    LinList_p res = *anchor;
-    while(&(*anchor) -> next)
-    {
-        *anchor = &(*anchor) -> next;
-    }
-    &(*anchor) -> next = NULL;
-    return *anchor;
+// LinList_p LinListExtractLast(LinList_p *anchor){
+//     LinList_p res = *anchor;
+//     while(&(*anchor) -> next)
+//     {
+//         *anchor = &(*anchor) -> next;
+//     }
+//     &(*anchor) -> next = NULL;
+//     return *anchor;
 
-}
+// }
 
 //zaehlen von Elementen
 
-/* Ich gehe die Liste durch. bei jedem String guck ich nach, ob ich ihn schon durchsucht habe
-*/
-// void LinList_count(LinList_p liste, char* value){
-//     int counter;
-//     while (liste)
-//     {
-//         //add
-//     }
-    
-// }
+
 
 //Umdrehen
 LinList_p LinList_revert(LinList_p *anchor)
@@ -119,6 +110,33 @@ LinList_p LinList_Find(LinList_p liste, char* value)
     }
     return NULL;
 }
+
+
+/* Ich gehe die Liste durch. bei jedem String guck ich nach, ob ich ihn schon durchsucht habe
+*/
+void LinList_count(LinList_p *liste)
+{
+    printf("\nAnzahl\tString\n");
+    // int counter = 0;
+    while (&liste)
+    {
+        int counter = 0;
+        char* wert = liste -> payload;
+        while (&liste)
+        {
+            if(LinList_Find(liste, wert))
+            {
+                counter =+ 1;
+            }
+            liste = &(*liste) -> next;
+
+        }
+        printf("%i\t%s",counter, wert);
+        liste = &(*liste) -> next;
+    }
+    
+}
+
 
 //sortieren der Liste
 LinList_p LinListSort(LinList_p liste){
@@ -224,12 +242,14 @@ int main(int argc, char *argv[])
     // //Sortieren
     // liste = LinListSort(liste);
 
+    //Statistik
+    LinList_count(liste);
     
     // //umdrehen
     // liste = LinList_revert(&liste);
 
     // letztes Element löschen
-    LinList_p lastElement = LinListExtractLast(&liste);
+    // LinList_p lastElement = LinListExtractLast(&liste);
 
     //printing in the right order
     printf("\nOriginal order\n==========\n");
