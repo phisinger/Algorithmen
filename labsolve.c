@@ -61,7 +61,7 @@ Lab_p findLab(Lab_p laby)
     int aktx = laby->startx;
     int akty = laby->starty;
 
-    while(aktx!=laby->treasurex && akty!=laby->treasurey)
+    while(!(aktx==laby->treasurex && akty==laby->treasurey))
     {
         printf("Find aufgerufen\n");
         printLab(laby);
@@ -79,7 +79,6 @@ Lab_p findLab(Lab_p laby)
             akty++;
         }
         
-
         // nach links laufen
         else if ((laby->lab[akty][aktx-1]) == ' ')
         {
@@ -95,6 +94,8 @@ Lab_p findLab(Lab_p laby)
         }
 
         //!-Fall
+        
+        
         // nach rechts laufen
         else if ((laby->lab[akty][aktx+1]) == '.')
         {
@@ -122,6 +123,8 @@ Lab_p findLab(Lab_p laby)
             (laby->lab[akty][aktx]) = '!';
             akty--;
         }
+
+        
        
     }
     return laby;
@@ -168,6 +171,12 @@ Lab_p findLab(Lab_p laby)
     if(testLab(laby))
     {
         printLab(laby);
+        // Debugging
+        printf("test: %i\n", test);
+        printf("startx: %i\n", laby -> startx);
+        printf("starty: %i\n", laby -> starty);
+        printf("treasurex: %i\n", laby -> treasurex);
+        printf("treasurey: %i\n", laby -> treasurey);
     }
     else
     {
