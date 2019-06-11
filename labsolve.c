@@ -65,27 +65,39 @@ Lab_p findLab(Lab_p laby)
     {
         printf("Find aufgerufen\n");
         printLab(laby);
-        // nach rechts laufen
-        if ((laby->lab[akty][aktx+1]) == ' ') 
+        //finden
+        if ((laby->lab[akty+1][aktx]) == 'X')
         {
-            (laby->lab[akty][aktx+1]) = '.';
-            aktx++;
+            return laby;
         }
-        
+        // nach rechts laufen
+        else if ((laby->lab[akty][aktx+1]) == 'X') 
+        {
+            return laby;
+        }
+        // nach oben laufen
+        else if ((laby->lab[akty-1][aktx]) == 'X')
+        {
+            return laby;
+        }
+
+        // nach links laufen
+        else if ((laby->lab[akty][aktx-1]) == 'X')
+        {
+            return laby;
+        }
         //nach unten laufen
-        else if ((laby->lab[akty+1][aktx]) == ' ')
+        if ((laby->lab[akty+1][aktx]) == ' ')
         {
             (laby->lab[akty+1][aktx]) = '.';
             akty++;
         }
-        
-        // nach links laufen
-        else if ((laby->lab[akty][aktx-1]) == ' ')
+        // nach rechts laufen
+        else if ((laby->lab[akty][aktx+1]) == ' ') 
         {
-            (laby->lab[akty][aktx-1]) = '.';
-            aktx--;
+            (laby->lab[akty][aktx+1]) = '.';
+            aktx++;
         }
-        
         // nach oben laufen
         else if ((laby->lab[akty-1][aktx]) == ' ')
         {
@@ -93,15 +105,16 @@ Lab_p findLab(Lab_p laby)
             akty--;
         }
 
-        //!-Fall
-        
-        
-        // nach rechts laufen
-        else if ((laby->lab[akty][aktx+1]) == '.')
+        // nach links laufen
+        else if ((laby->lab[akty][aktx-1]) == ' ')
         {
-            (laby->lab[akty][aktx]) = '!';
-            aktx++;
+            (laby->lab[akty][aktx-1]) = '.';
+            aktx--;
         }
+           
+        
+
+        //.-Fall
 
         //nach unten laufen
         else if ((laby->lab[akty+1][aktx]) == '.')
@@ -109,12 +122,11 @@ Lab_p findLab(Lab_p laby)
             (laby->lab[akty][aktx]) = '!';
             akty++;
         }
-
-        // nach links laufen
-        else if ((laby->lab[akty][aktx-1]) == '.')
+        // nach rechts laufen
+        else if ((laby->lab[akty][aktx+1]) == '.')
         {
             (laby->lab[akty][aktx]) = '!';
-            aktx--;
+            aktx++;
         }
 
         // nach oben laufen
@@ -124,8 +136,12 @@ Lab_p findLab(Lab_p laby)
             akty--;
         }
 
-        
-       
+        // nach links laufen
+        else if ((laby->lab[akty][aktx-1]) == '.')
+        {
+            (laby->lab[akty][aktx]) = '!';
+            aktx--;
+        }  
     }
     return laby;
 }
