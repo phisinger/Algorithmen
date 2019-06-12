@@ -60,32 +60,40 @@ Lab_p findLab(Lab_p laby)
 {
     int aktx = laby->startx;
     int akty = laby->starty;
+    int count = 0;
 
-    while(!(aktx==laby->treasurex && akty==laby->treasurey))
+    while(true)
     {
-        printf("Find aufgerufen\n");
+        // printf("Find aufgerufen\n");
         printLab(laby);
+        count++;
         //finden
         if ((laby->lab[akty+1][aktx]) == 'X')
-        {
+        {   
+            printf("Schritte: %i\n", count);
             return laby;
         }
         // nach rechts laufen
         else if ((laby->lab[akty][aktx+1]) == 'X') 
         {
+            printf("Schritte: %i\n", count);
             return laby;
         }
         // nach oben laufen
         else if ((laby->lab[akty-1][aktx]) == 'X')
         {
+            printf("Schritte: %i\n", count);
             return laby;
         }
 
         // nach links laufen
         else if ((laby->lab[akty][aktx-1]) == 'X')
         {
+            printf("Schritte: %i\n", count);
             return laby;
         }
+
+        //suchen
         //nach unten laufen
         if ((laby->lab[akty+1][aktx]) == ' ')
         {
@@ -112,10 +120,8 @@ Lab_p findLab(Lab_p laby)
             aktx--;
         }
            
-        
 
         //.-Fall
-
         //nach unten laufen
         else if ((laby->lab[akty+1][aktx]) == '.')
         {
@@ -141,6 +147,11 @@ Lab_p findLab(Lab_p laby)
         {
             (laby->lab[akty][aktx]) = '!';
             aktx--;
+        }
+        else
+        {
+            printf("ERROR\n");
+            return laby;
         }  
     }
     return laby;
