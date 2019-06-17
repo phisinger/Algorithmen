@@ -65,30 +65,11 @@ Lab_p findLab(Lab_p laby)
     while(true)
     {
         // printf("Find aufgerufen\n");
-        printLab(laby);
+        // printLab(laby);
         count++;
         //finden
-        if ((laby->lab[akty+1][aktx]) == 'X')
+        if ((laby->lab[akty+1][aktx]) == 'X' || (laby->lab[akty][aktx+1]) == 'X' || (laby->lab[akty-1][aktx]) == 'X' || (laby->lab[akty][aktx-1]) == 'X')
         {   
-            printf("Schritte: %i\n", count);
-            return laby;
-        }
-        // nach rechts laufen
-        else if ((laby->lab[akty][aktx+1]) == 'X') 
-        {
-            printf("Schritte: %i\n", count);
-            return laby;
-        }
-        // nach oben laufen
-        else if ((laby->lab[akty-1][aktx]) == 'X')
-        {
-            printf("Schritte: %i\n", count);
-            return laby;
-        }
-
-        // nach links laufen
-        else if ((laby->lab[akty][aktx-1]) == 'X')
-        {
             printf("Schritte: %i\n", count);
             return laby;
         }
