@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
+#include <math.h>
 
 #define MAXTERMS 50
 #define MAXITEMS 100000
@@ -35,8 +36,7 @@ void quickSort(int *links, int *rechts) {
     int *pointer2 = rechts;
     int z, y;
     
-    //    Bitweise Verschiebung
-    y = *(links + (rechts - links >> 1));
+    y = *(links + ((rechts - links)/2));
     do {
         while(*pointer1 < y) pointer1++;
         while(*pointer2 > y) pointer2--;
@@ -128,8 +128,8 @@ int main(int argc, char *argv[])
     printf("\nQuickSort time: %lld microsec\n", quickres);
 
     // Verhaeltnis
-    long double quo = quickres/insertres;
-    printf("Quicksort war %Lf-mal schneller als InsertSort\n", quo);
+    float quo = 1/(quickres/insertres);
+    printf("Quicksort war %f-mal schneller als InsertSort\n", quo);
     
 
     if(in!=stdin)
